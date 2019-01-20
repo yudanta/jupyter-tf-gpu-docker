@@ -1,0 +1,13 @@
+version: '2'
+services:
+  jupyter:
+    restart: always
+    container_name: 'garfield_gpu'
+    build: .
+    volumes:
+      - ./workdir:/notebooks # notebook directory
+    ports:
+      - 8888:8888 # exposed port for jupyter
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0 # which gpu do you want to use for this container
+      - PASSWORD=yourstrongpassword
